@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+ <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Cinzel" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet"> 
+</head>
+<body>
+    <script>
+     
+
+  
+    </script>
+    <style>
+        #d{
+            margin-bottom: 15px;
+            margin-top:25px;
+        }
+
+        img{
+            padding-top:60px;
+            border-radius:50px;
+        }
+
+        h3{
+            color:white;
+            margin-top:15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        p{
+            color:#C0C0C0;
+            margin:0 40px 20px 40px;
+            line-height: 30px;
+            
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        #k{
+            background:url('http://4.bp.blogspot.com/-_rLchTBGJKM/VCOrMOfn5AI/AAAAAAAAFY0/o3U_nNS08ew/s1600/texture%20background%20for%20web%20copy.jpg');
+        }
+
+        h2{
+            color:white;
+        }
+
+        label{
+            color:white;
+        }
+        
+    </style>
+    
+   
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Doctor is Here</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="">Home</a></li>
+				
+				<li><a href="about.html" accesskey="3" title="">About Us</a></li>
+				<li class ="active"><a href="#" accesskey="4" title="">Posts</a></li>
+				<li><a href="contact.html" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+    </div>
+
+    
+    <div id = "k">
+    <div class = "container">
+                   <br><br>
+				   <h2>Create New Post</h2>
+                  
+                   <form id = "form" >
+                    <div class = "form-group row">
+                      <label for = "subject">Post Title:-</label>
+                      
+                      <textarea type = "text" id = "title" name = "description" class ="form-control" style = "height:40px; border:solid 1px"></textarea>
+                      
+                     <label for = "message">Description:-</label>
+                     
+                    <textarea type = "text" id = "description" name = "description" class = "form-control" style = "height:100px; border:solid 1px "></textarea>
+                    
+                    </div>
+                    <br>
+                    <br>
+                    <center><input type="file" class="btn btn-primary " id = "file" value = "Upload Image" ></center>
+                    <br><br>
+                    </form>
+                    <ul class="actions">
+				   <li><a href="#" class="button" id = "submit" type = "submit">Submit Post</a></li>
+			       </ul>
+    
+    </div></div>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+
+                var config = {
+               apiKey: "AIzaSyD3_tc5VVKfpYMhEJPTwiuyOZUqMbLlYAM",
+               authDomain: "proj-96800.firebaseapp.com",
+               databaseURL: "https://proj-96800.firebaseio.com",
+                projectId: "proj-96800",
+                storageBucket: "proj-96800.appspot.com",
+                messagingSenderId: "507699466222"
+                };
+
+             firebase.initializeApp(config);
+
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+              var storage = firebase.storage();
+
+            //selector for unordered list
+            $group = $('#group');
+            
+
+            //GET request to Firebase
+            $.get("https://proj-96800.firebaseio.com/data.json", function(data, status){
+           
+            
+
+            //append HTML 
+            s='';
+            for(var dataItem in data){
+                var title = data[dataItem].title;
+                var description= data[dataItem].description;
+                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
+                
+                
+                
+            }
+
+            $group.html(s);
+            
+            });
+        
+        //selectors for title and description
+        $title = $('#title');
+        $description = $('#description');
+        var url='';
+        
+
+        var file =document.getElementById('file');
+        file.addEventListener('change',function(e){
+            var file = e.target.files[0];
+            var ref = firebase.storage().ref('images/' + file.name);
+            var task = ref.put(file);
+            task.on('state_changed',
+            function progress(snapshot){
+
+            },
+            function error(err){
+                console.log(err);
+                
+            },function complete(){
+                 ref.getDownloadURL().then(function(data){
+                url = data;
+                console.log(data);
+            });
+            }
+            );
+
+            
+            
+           
+
+        });
+        
+        //on button click
+        $('#submit').click(function(){
+              
+              
+
+
+              var title = $title.val();
+              var description=$description.val();
+              var obj = {title:title,description:description,url:url};
+             
+             //POST request
+              $.post("https://proj-96800.firebaseio.com/data.json",
+              JSON.stringify(obj),
+              function(data, status){
+              console.log(data);
+              $('#form')[0].reset();
+              location.reload();
+
+    });
+        });
+        });
+
+      
+    </script>
+    <br><br>
+    
+    
+		<div class="container">
+          <div id = "group">
+              
+                      
+          </div> 
+		</div>
+		
+	
+	
+   
+    
+</body>
+</html>

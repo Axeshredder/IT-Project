@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD72lg7QCWvbTPIRNAX1H4I0mnWPwIf244&callback=initMap">
+    </script>
+ <div id="wrapper">
+	<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Doctor is Here</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="">Home</a></li>
+				
+				<li class = "active"><a href="#" accesskey="3" title="">About Us</a></li>
+				<li><a href="posts.html" accesskey="4" title="">Posts</a></li>
+				<li><a href="contact.html" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div id="featured">
+		<div class="container">
+        <img src="http://www.lmdc.edu.pk/wp-content/uploads/2015/03/global-health-careers1.jpg" alt="" width="1000" height="333"  id = "x" />
+			<div class="title">
+				<h2>About Us</h2>
+				<span class="byline">Our goal is to make the world a disease free place where everybody has access to quality healthcare</span> </div>
+			<p>We do this because we believe it is eah individual's fundamental right.By organizing regular sessions on Nutrition and Lifestyle improvement,we aim to prevent the spread of harmful and contagious diseases.Our network of doctors and volunteers is also actively involved in setting up medical camps in affected areas.</p>
+		</div>
+		
+	</div>
+	</div>
+
+    <center><div id = "section"><div id="map">
+
+    </div></div></center>
+    <style>
+        #map{
+            height:400px;
+            width:100%;
+            
+            
+            
+        }
+
+        #section{
+            background-color: white;
+            
+        }
+    </style>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+  <script type="text/javascript">
+         
+            var imgObj = null;
+            
+            function init(){
+               imgObj = document.getElementById('x');
+               imgObj.style.position= 'relative'; 
+               imgObj.style.left = '0px'; 
+               var id=setInterval(moveRight,100);
+               
+
+            }
+            
+            function moveRight(){
+                if(imgObj.style.left=='100px')
+                  imgObj.style.left=0;
+                  else
+               imgObj.style.left = parseInt(imgObj.style.left) + 5 + 'px';
+            }
+
+            function moveLeft(){
+                
+               if(imgObj.style.right=='50px')
+                  clearInterval(id1)    
+                  else 
+               imgObj.style.right = parseInt(imgObj.style.right) + 5 + 'px';
+            }
+            
+            window.onload =init;
+         //-->
+      </script>
+<div id="extra" class="container">
+		<div class="title">
+			
+			
+		<div id="three-column">
+			<div class="boxA">
+				<div class="boxa">
+					<img src = "http://www.ofad.org/files/imagecache/daily_picture/daily-photo/recent-and-random-portraits_8.jpg" height =200 width =200 style = "border-radius:100px">
+					<br><p>Chong Lee</p>
+                    <p>Chief Executive Officer(CEO)</p>
+				</div>
+			</div>
+			<div class="boxB">
+				<div class="boxa">
+					<img src = "http://ofad.org/files/daily-photo/recent-portraits-random-people-in-random-places_3.jpg" height = 200 width = 200 style = "border-radius:100px">
+					<br><p>Mary </p>
+                    <p>Vice President</p>
+				</div>
+			</div>
+			<div class="boxC">
+				<div class="boxa">
+					<img src = "http://visboo.com/img/29042010/66120.jpg" height = 200 width = 200 style = "border-radius:100px">
+					<br><p>Jacob</p>
+                    <p>HR Manager</p>
+				</div>
+			</div>
+		</div>
+		
+		</ul>
+	</div>
+    </div>
+
+    <div id="copyrighta" class="container">
+	<p>&copy; Untitled. All rights reserved. | Designed and Developed by Dhruv.</p>
+</div>
+</body>
+</html>
