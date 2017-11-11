@@ -76,7 +76,7 @@
 				<li><a href="about.html" accesskey="3" title="" id ="about"  >About Us</a></li>
 				<li class ="active"><a href="#" accesskey="4" title="" id="posts" >Posts</a></li>
 				<li><a href="contact.html" accesskey="5" title="" id = "contact">Contact Us</a></li>
-                <li><a href = "#" style = "display:none" id="logout">Log Out<a></li>
+                <li><a href = "#"  id="logout">Log Out<a></li>
 			</ul>
 		</div>
 	</div>
@@ -87,7 +87,7 @@
     <div id = "k">
     <div class = "container">
                    <br><br>
-				   <h2>Create New Post</h2>
+				   <h2 id ="tit">Create New Post</h2>
                   
                    <form id = "form" >
                     <div class = "form-group row">
@@ -122,6 +122,8 @@
         
           $(document).ready(function(){
               $('#logout').addClass('display');
+              $('#form').addClass('display');
+              $('#tit').addClass('#display');
               
                 var config = {
                apiKey: "AIzaSyD3_tc5VVKfpYMhEJPTwiuyOZUqMbLlYAM",
@@ -208,7 +210,8 @@
            $('#posts').addClass('display');
            $('#contact').addClass('display');
            $('#logout').removeClass('display');
-           $('#form').addClass('display');
+           $('#form').removeClass('display');
+           $('#tit').removeClass('display');
 
   // ...
 }).catch(function(error) {
