@@ -257,7 +257,24 @@
               function(data, status){
               console.log(data);
               $('#form')[0].reset();
-             $group.append('<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ title +' </h3></center><center><p class = "card-text"> '+description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>')
+             $.get("https://proj-96800.firebaseio.com/data.json", function(data, status){
+           
+            
+
+            //append HTML 
+            s='';
+            for(var dataItem in data){
+                var title = data[dataItem].title;
+                var description= data[dataItem].description;
+                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
+                
+                
+                
+            }
+
+            $group.html(s);
+            
+            });
 
     });
         });
