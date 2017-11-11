@@ -87,7 +87,6 @@
     <div id = "k">
     <div class = "container">
                    <br><br>
-				   <h2 id ="tit">Create New Post</h2>
                   
                    <form id = "form" >
                     <div class = "form-group row">
@@ -123,7 +122,7 @@
           $(document).ready(function(){
               $('#logout').addClass('display');
               $('#form').addClass('display');
-              $('#tit').addClass('#display');
+              
               
                 var config = {
                apiKey: "AIzaSyD3_tc5VVKfpYMhEJPTwiuyOZUqMbLlYAM",
@@ -211,7 +210,8 @@
            $('#contact').addClass('display');
            $('#logout').removeClass('display');
            $('#form').removeClass('display');
-           $('#tit').removeClass('display');
+           
+           $('#signup').addClass('display');
 
   // ...
 }).catch(function(error) {
@@ -224,6 +224,22 @@
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
+});
+        });
+
+        $('#logout').click(function(){
+            firebase.auth().signOut().then(function() {
+                  $('#index').removeClass('display');
+           $('#about').removeClass('display');
+           $('#posts').removeClass('display');
+           $('#contact').removeClass('display');
+           $('#logout').addClass('display');
+           $('#form').addClass('display');
+           
+           $('#signup').removeClass('display');
+                  
+          }).catch(function(error) {
+          console.log(error);
 });
         });
         $('#submit').click(function(){
