@@ -9,6 +9,7 @@
 <link href="http://fonts.googleapis.com/css?family=Varela" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link 
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
   rel="stylesheet"  type='text/css'>
@@ -17,10 +18,10 @@
 
 </head>
 <body>
+	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    
+    
 
      <div id="wrapper">
 	<div id="header-wrapper">
@@ -44,22 +45,23 @@
 		<div class="container">
 			<div class="title">
                 <br><br>
-				<h2 style = "color:#BC2929">SEND EMAIL</h2>
-                <form>
+				<h2 style = "color:#BC2929">SEND FEEDBACK</h2>
+                <form id = "w">
                     <div class = "form-group row">
-                      <label for = "subject">Subject:-</label>
+                      <label for = "subject">Title:-</label>
                       
                       <textarea type = "text" id = "subject" name = "subject" class ="form-control" style = "height:40px; border:solid 1px"></textarea>
                       
-                     <label for = "message">Email Message:-</label>
+                     <label for = "message">Feedback Message:-</label>
                      
                     <textarea type = "text" id = "message" name = "message" class = "form-control" style = "height:100px; border:solid 1px "></textarea>
                     
                     </div>
-                </form>
-			<ul class="actions">
-				<li><a href="#" class="button">Send Email</a></li>
+					<ul class="actions">
+				<li><a class="button" id ="x" type = "submit">Send Feedback</a></li>
 			</ul>
+                </form>
+			
 		</div>
 </div>
          
@@ -81,7 +83,25 @@
     </section>
     
     
-    
+    <script>
+		$(function(){
+
+			$('#w')[0].reset();
+          
+		   $('#x').click(function(){
+			   var subject = $('#subject').val();
+			   var message = $('#message').val();
+			   var obj = {subject:subject,message:message}
+			   $.post("https://storage-41c5b.firebaseio.com/data.json",JSON.stringify(obj),function(data,status){
+				   console.log(data)
+				   console.log(status);
+				   alert("Your feedback has been succesfully submitted!Thank you");
+				   $('#w')[0].reset();
+				   
+			   });
+		   });
+		});
+	</script>
    
 </body>
 </html>
