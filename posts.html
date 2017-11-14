@@ -27,6 +27,10 @@
             margin-top:25px;
         }
 
+        h4{
+            color:#C0C0C0;
+        }
+
         img{
             padding-top:60px;
             border-radius:50px;
@@ -153,7 +157,7 @@
             for(var dataItem in data){
                 var title = data[dataItem].title;
                 var description= data[dataItem].description;
-                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><h4 class = "card-title">'+data[dataItem].user.displayName+'</h4></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
+                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><h4 class = "card-title">By:-'+data[dataItem].user.displayName+'</h4></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
                 
                 
                 
@@ -266,7 +270,7 @@
             for(var dataItem in data){
                 var title = data[dataItem].title;
                 var description= data[dataItem].description;
-                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><h4 class = "card-title">'+data[dataItem].user.displayName+'</h4></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
+                 s+= '<div class = "card card-inverse" style="background-color: #333; border-color: #333;"><div class = "card-block"><center><img src = "'+data[dataItem].url+'" height = 300 width = 300 ></center><center><h3 class = "card-title"> '+ data[dataItem].title +' </h3></center><center><h4 class = "card-title">By:-'+data[dataItem].user.displayName+'</h4></center><center><p class = "card-text"> ' + data[dataItem].description+ ' </p></center><center><a href="#" class="btn btn-primary" id = "d"> Gosomewhere</a></center></div></div><br><br>'
                 
                 
                 
